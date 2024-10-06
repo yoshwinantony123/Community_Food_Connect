@@ -4,113 +4,228 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weekly Deals for Donations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Times New Roman', Times, serif, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #89CFF0;
+            background-image: url('food_shelf.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: #333;
+            background-color: #ffffff;
         }
 
         header {
-            background-color: #89CFF0;
+            background-color: rgba(33, 33, 33, 0.9);
             color: white;
             text-align: center;
             padding: 20px;
         }
 
-        .container {
-            width: 80%;
-            margin: 20px auto;
+        header h1 {
+            color: white;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .tab, .button {
+            background-color: #fff;
+            border: 1px solid #212121;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 0 5px;
+            border-radius: 5px 5px 0 0;
+            transition: background-color 0.3s, color 0.3s;
+            font-weight: 500;
+        }
+
+        .tab.active, .button:hover {
+            background-color: #212121;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
             background-color: white;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            position: relative;
+            width: calc(100% - 40px);
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .active-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         h1, h2, h3 {
             color: #333;
+            margin: 10px 0;
         }
 
-        .deal {
-            border-bottom: 1px solid #89CFF0;
+        .deal, .request {
+            border-bottom: 1px solid #212121;
             padding-bottom: 10px;
             margin-bottom: 10px;
         }
 
-        .deal:last-child {
+        .deal:last-child, .request:last-child {
             border: none;
         }
 
         .footer {
-            background-color: #89CFF0;  
+            background-color: rgba(33, 33, 33, 0.9);
             color: white;
             text-align: center;
             padding: 10px;
-            margin-top: 20px;
+            margin-top: auto;
         }
 
         .cta-button {
-            background-color: #89CFF0;
+            background-color: #212121;
             color: white;
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
             display: inline-block;
             margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .button-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Support Your Waterbury FoodShelf</h1>
+    <h1>Support Your Local Waterbury Foodshelf!</h1>
     <p>Check out the weekly deals from local stores and purchase items to donate!</p>
 </header>
 
+<div class="button-container">
+    <a href="https://www.shaws.com/weeklyad?storeId=649" class="button">Shaws Promotions</a>
+    <a href="https://www.villagemarketvt.com/weekly-ad" class="button">Village Market Promotions</a>
+</div>
+
+<div class="tabs">
+    <div class="tab active" onclick="showTab('deals')">Weekly Deals</div>
+    <div class="tab" onclick="showTab('how-to-help')">How You Can Help</div>
+    <div class="tab" onclick="showTab('contact')">Contact Us</div>
+    <div class="tab" onclick="showTab('requests')">What We Are Requesting</div>
+</div>
+
 <div class="container">
-    <h2>This Week's Featured Stores</h2>
+    <div id="deals" class="tab-content active-content">
+        <h2>This Week's Featured Stores</h2>
+        <div class="deal">
+            <h3>Shaws - Special Deals</h3>
+            <ul>
+                <li>Item: Poland Spring Water 24 Pack 1 is $3.99</li>
+                <li>Item: Progresso Soups buy 2 get 2 free 1 can is $2.19</li>
+                <li>Item: Stouffer's or Lean Cuisine Entrée $1.97 original price was $3.79</li>
+            </ul>
+            <p>Consider buying these items for donation to the shelter!</p>
+        </div>
 
-    <!-- Store 1: Shaws -->
-    <div class="deal">
-        <h3>Shaws - Special Deals</h3>
-        <ul>
-            <li>Item: Poland Spring Water 24 Pack 1 is $3:99</li>
-            <li>Item: Progresso Soups buy 2 get 2 free 1 can is $2.19</li>
-            <li>Item: Stouffer's or Lean Cuisine Entrée 1.97 orignal price was 3.79</li>
-        </ul>
-        <p>Consider buying these items for donation to the shelter!</p>
+        <div class="deal">
+            <h3>Village Market - Weekly Offers</h3>
+            <ul>
+                <li>Item: Bulk Organic White Jasmine Rice - 60 cents per pound found in ISLE 1</li>
+                <li>Item: Annie's Macaroni & Cheese, Shells & White Cheddar 6 oz 4 for $5</li>
+                <li>Item: Maruchan Ramen Noodle Soup, Chicken Flavor 3 Oz 50 cents FOR 1 pack</li>
+            </ul>
+            <p>These items are in high demand at our local food shelf. Every little bit helps!</p>
+        </div>
+
+        <p>This will be updated every week.</p>
     </div>
 
-    <!-- Store 2: Village Market -->
-    <div class="deal">
-        <h3>Village Market - Weekly Offers</h3>
-        <ul>
-            <li>Item: Bulk Organic White Jasmine Rice - 60 cents per pound found in ISLE 1</li>
-            <li>Item: Annie's Macaroni & Cheese, Shells & White Cheddar 6 oz 4 for $5 </li>
-            <li>Item: Maruchan Ramen Noodle Soup, Chicken Flavor 3 Oz 50 cents FOR 1 pack</li>
-        </ul>
-        <p>These items are in high demand at our local food shelf. Every little bit helps!</p>
+    <div id="how-to-help" class="tab-content">
+        <h2>How You Can Help</h2>
+        <p>Please purchase any of the items listed above from the featured stores and deliver them to the following location:</p>
+        <h3>Donation Drop-off Location</h3>
+        <p>57 South Main Street<br>
+            Waterbury, Vermont 05676</p>
+        <p>Drop-off Hours: Monday - Friday, 9 AM - 5 PM</p>
+        <p>Or Drop Off at the main office at Crosset Brook Middle School.</p>
     </div>
 
-    <p> this will be updated everyweek</p>
+    <div id="contact" class="tab-content">
+        <h3>Need More Information / Have Any Questions?</h3>
+        <p>Contact me at <a href="mailto:yoshwinantony@gmail.com">yoshwinantony@gmail.com</a> for any inquiries or to arrange another delivery time.</p>
+    </div>
 
-        
-
-    <h2>How You Can Help</h2>
-    <p>Please purchase any of the items listed above from the featured stores and deliver them to the following location:</p>
-    <h3>Donation Drop-off Location</h3>
-    <p>57 South Main Street
-        Waterbury, Vermont 05676</p>
-    <p>Drop-off Hours: Monday - Friday, 9 AM - 5 PM</p>
-    <p>Or Drop Off at the main office at Crosset Brook Middle School.</p>
-
-    <h3>Need More Information?</h3>
-    <p>Contact us at <a href="mailto:yoshwinantony@gmail.com">yoshwinantony@gmail.com</a> for any questions or to arrange another delivery time.</p>
+    <div id="requests" class="tab-content">
+        <h2>What We Are Requesting</h2>
+        <div class="request">
+            <ul>
+                <li>Canned Vegetables (no salt added)</li>
+                <li>Canned Fruit (in juice or water)</li>
+                <li>Pasta and Rice</li>
+                <li>Canned Protein (tuna, chicken, beans)</li>
+                <li>Peanut Butter</li>
+                <li>Breakfast Cereal</li>
+                <li>Whole Grain Bread</li>
+                <li>Diapers and Baby Food</li>
+            </ul>
+        </div>
+        <p>Your donations of these items are greatly appreciated!</p>
+    </div>
 </div>
 
 <div class="footer">
     <p>Thank you for supporting your community!</p>
+    <p>Website made by Yoshwin Antony.</p>
 </div>
+
+<script>
+    function showTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        const tabs = document.querySelectorAll('.tab');
+        const activeContent = document.getElementById(tabId);
+
+        contents.forEach(content => {
+            if (content.classList.contains('active-content')) {
+                content.style.opacity = 0;
+                content.style.transform = 'translateY(10px)';
+            }
+        });
+
+        tabs.forEach(tab => tab.classList.remove('active'));
+
+        setTimeout(() => {
+            contents.forEach(content => {
+                content.classList.remove('active-content');
+            });
+
+            activeContent.classList.add('active-content');
+            activeContent.style.opacity = 1;
+            activeContent.style.transform = 'translateY(0)';
+        }, 500);
+        event.currentTarget.classList.add('active');
+    }
+</script>
 
 </body>
 </html>
